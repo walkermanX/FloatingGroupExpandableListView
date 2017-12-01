@@ -123,4 +123,36 @@ public class WrapperExpandableListAdapter extends BaseExpandableListAdapter {
         final Boolean expanded = mGroupExpandedMap.get(groupPosition);
         return expanded != null ? expanded : false;
     }
+
+    @Override
+    public int getChildType(int groupPosition, int childPosition) {
+        if (this.mWrappedAdapter instanceof BaseExpandableListAdapter)
+            return ((BaseExpandableListAdapter) this.mWrappedAdapter).getChildType(groupPosition, childPosition);
+
+        return super.getChildType(groupPosition, childPosition);
+    }
+
+
+    @Override
+    public int getChildTypeCount() {
+        if (this.mWrappedAdapter instanceof BaseExpandableListAdapter)
+            return ((BaseExpandableListAdapter) this.mWrappedAdapter).getChildTypeCount();
+
+        return super.getChildTypeCount();
+    }
+
+
+    @Override
+    public int getGroupType(int groupPosition) {
+        if (this.mWrappedAdapter instanceof BaseExpandableListAdapter)
+            return ((BaseExpandableListAdapter) this.mWrappedAdapter).getGroupType(groupPosition);
+        return super.getGroupType(groupPosition);
+    }
+
+    @Override
+    public int getGroupTypeCount() {
+        if (this.mWrappedAdapter instanceof BaseExpandableListAdapter)
+            return ((BaseExpandableListAdapter) this.mWrappedAdapter).getGroupTypeCount();
+        return super.getGroupTypeCount();
+    }
 }
